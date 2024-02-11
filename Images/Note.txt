@@ -1,0 +1,1 @@
+Image files represent illustrative samples of the dataset
