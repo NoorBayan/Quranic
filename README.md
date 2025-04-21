@@ -1,4 +1,4 @@
-# The Quranic Corpus: A Treasure Trove of Linguistic Insights
+# The Quranic Corpus
 
  <p align="center"> 
  <img src = "https://raw.githubusercontent.com/NoorBayan/Quranic/main/Images/logo.jpg" width = "300px"/>
