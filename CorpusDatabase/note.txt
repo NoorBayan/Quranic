@@ -1,3 +1,0 @@
-Data Structure:
-The data follows a structured format with clear column names and defined data types.
-The data is organized logically, grouped by related linguistic elements and their functions.
