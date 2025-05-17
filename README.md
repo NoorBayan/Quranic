@@ -1,69 +1,156 @@
-# The Quranic Corpus
+<p align="center">
+  <img src="https://raw.githubusercontent.com/NoorBayan/Quranic/main/Images/logo.jpg" alt="Quranic Corpus Logo" width="250px"/>
+</p>
 
- <p align="center"> 
- <img src = "https://raw.githubusercontent.com/NoorBayan/Quranic/main/Images/logo.jpg" width = "300px"/>
- </p>
+# The Quranic Treebank: A Comprehensive Linguistic Resource for Classical Arabic
+
+Welcome to the **Quranic Treebank**, a groundbreaking linguistic resource meticulously crafted to unlock the rich and complex tapestry of Classical Arabic as manifested in the Holy Quran. This comprehensive dataset empowers scholars, linguists, computational researchers, and application developers with an unparalleled depth of information, enabling profound exploration into the intricacies of Quranic grammar, morphology, and syntax.
+
+This resource is not merely a collection of text but a deeply annotated corpus, designed to be **computationally accessible and linguistically robust**, serving as a foundational benchmark for research and development in Arabic Natural Language Processing (NLP).
+
+---
+
+## Table of Contents
+* [Bridging Tradition and Technology](#bridging-tradition-and-technology)
+* [Key Highlights & Features](#key-highlights--features)
+* [Deep Dive into the Data Structure](#deep-dive-into-the-data-structure)
+  * [Core & Positional Information](#1-core--positional-information)
+  * [Orthographic Representations](#2-orthographic-representations)
+  * [Morphological Analysis](#3-morphological-analysis)
+  * [Syntactic Analysis (Hybrid Framework)](#4-syntactic-analysis-hybrid-framework)
+* [IIRAB Vis: Interactive Syntactic Visualization Tool](#iirab-vis-interactive-syntactic-visualization-tool)
+  * [Key Visualization Features](#key-visualization-features)
+  * [Experience IIRAB Vis: Interactive Demo (Google Colab)](#experience-iirab-vis-interactive-demo-google-colab)
+* [Getting Started (Local Usage)](#getting-started-local-usage)
+* [Contributing](#contributing)
+* [License](#license)
+
+---
+
+## Bridging Tradition and Technology
+
+The Quranic Treebank aims to serve a diverse audience, from seasoned academics advancing cutting-edge research in historical linguistics and NLP, to students of Arabic and Islamic studies seeking to deepen their comprehension of the Quran's linguistic miracle. By providing a systematic, multi-layered analysis, this corpus empowers users to:
+
+*   **Conduct Advanced Linguistic Research:** Investigate complex grammatical phenomena, morphological patterns, and syntactic structures.
+*   **Develop NLP Applications:** Train and evaluate models for parsing, morphological analysis, diacritization, machine translation, and more.
+*   **Enhance Quranic Studies:** Facilitate a nuanced understanding of Quranic Arabic for students and researchers, including non-native speakers.
+*   **Create Educational Resources:** Build innovative tools and platforms for teaching and learning Classical Arabic and Quranic sciences.
+
+---
+
+## Key Highlights & Features
+
+*   🌟 **Comprehensive Coverage:** Encompasses the **entire text of the Holy Quran**, ensuring exhaustive representation.
+*   📚 **Multi-Layered Annotation:** Offers granular analysis across **orthographic, morphological, and syntactic layers**, all meticulously interlinked.
+*   💻 **Computationally Engineered:** Specifically designed for **machine readability and computational processing**, addressing limitations of previous resources.
+*   🔗 **Hybrid Syntactic Framework:** Implements a novel hybrid **Constituency and Dependency** analysis, capturing the nuanced syntax of Classical Arabic.
+*   🔍 **Meticulous Detail:** Each token is enriched with detailed annotations, reflecting deep linguistic insight and validated by experts against authoritative grammatical references.
+*   🌐 **Publicly Accessible:** Freely available to the global research community to foster collaboration and innovation.
+
+---
+
+## Deep Dive into the Data Structure
+
+The Quranic Treebank is organized as a primary tabular dataset (extended CoNLL-X format) where each row represents a token. The columns provide rich linguistic information:
+
+### 1. Core & Positional Information
+*   `tid`: Unique sequential identifier for each token entry.
+*   `sentence_id`, `verse_id`, `word_id`, `tok_id`: Hierarchical identifiers for sentences (NLP-defined), Quranic verses, words, and tokens within words.
+*   `location`: Traditional Quranic location code (Surah:Verse:Word:Token).
+*   `chapter_id`: Numerical identifier for the Surah (Chapter).
+
+### 2. Orthographic Representations
+*   `uthmani_token` & `imlaai_token`: Token in Uthmani (Quran-specific) and Imlaai (standard CA) scripts.
+*   `uthmani_unicode` & `imlaai_unicode`: Buckwalter transliteration for Uthmani and Unicode for Imlaai script.
+*   `phonetic`: Phonetic transliteration of the token.
+*   `trans`: English translation corresponding to the token/segment.
+
+### 3. Morphological Analysis
+*   `pos` & `pos_ar`: Part-of-Speech (POS) tags (English-based and traditional Arabic terminology).
+*   `features`: Original morphological feature string (from source corpus).
+*   `segment`: Identifies token as prefix, suffix, or stem.
+*   `lemma` & `lemma_ar`: Word lemma (dictionary form) in transliteration/Unicode and Arabic script.
+*   `root` & `root_ar`: Word root (typically triliteral) in transliteration/Unicode and Arabic script.
+*   **Grammatical Features:** Detailed columns for `verb_form` (pattern), `prefix` type, `suffix` type, `verb_aspect` (perfect, imperfect, imperative), `nominal_state` (definite/indefinite), `verb_mood` (indicative, subjunctive, jussive), `nominal_case` (nominative, accusative, genitive), `derived_nouns` (active/passive participle, verbal noun), `verb_voice` (active/passive), `person`, `gender`, and `number`.
+
+### 4. Syntactic Analysis (Hybrid Framework)
+*   `special_group`: Identifies membership in special syntactic verb groups (e.g., *kāna wa-akhawātuhā*).
+*   **Dependency Relations:**
+    *   `rel_label` & `rel_label_ar`: Syntactic dependency relation labels (English & Arabic terminology).
+    *   `ref_token_id`: Identifier of the head token in the dependency relation.
+*   **Constituency Analysis:**
+    *   `is_constituent`: Flag indicating if the token heads a phrasal constituent.
+    *   `constituent_node`: *(Recheck definition: previously 'Classification of binary constituent relations', might need clarification or renaming based on your exact schema)*
+    *   `constituent_position`: Start and end token IDs defining the span of the constituent.
+    *   `constituents`: Surface string of the constituent (Uthmani script).
+    *   `constituent_label`: Syntactic category label of the constituent (e.g., Nominal Sentence (NS), Verbal Sentence (VS)).
+
+---
+
+## IIRAB Vis: Interactive Syntactic Visualization Tool
+
+To complement the Quranic Treebank, we introduce **IIRAB Vis**, a dedicated visualization interface built upon the Noor framework. IIRAB Vis is engineered to provide an intuitive and powerful means to explore the complex, multi-layered syntactic analyses present in the treebank.
+
+<p align="center">
+  <!-- Add a compelling screenshot of IIRAB Vis here if possible -->
+  <!-- <img src="link_to_iirab_vis_screenshot.png" alt="IIRAB Vis Screenshot" width="600px"/> -->
+</p>
+
+### Key Visualization Features:
+
+*   ✨ **Interactive Syntactic Trees:** Dynamically explore the parse structures of Quranic verses.
+*   🔄 **Hybrid Representation Rendering:** Natively visualizes the integrated constituency and dependency structures.
+*   👁️ **Ellipsis Resolution Display:** Clearly shows explicitly resolved elliptical constructions (from TAQDIR module).
+*   📖 **Iʿrāb Integration:** Bridges computational analysis with traditional Arabic grammatical concepts, facilitating deeper understanding.
+*   📊 **Rich Detail Display:** Showcases comprehensive morphological and syntactic annotations associated with each node and relation.
+
+### Experience IIRAB Vis: Interactive Demo (Google Colab)
+
+Get a hands-on experience with IIRAB Vis and its capabilities without any local setup through our interactive Google Colab notebook! This notebook demonstrates:
+
+1.  Loading the Quranic Treebank data and necessary libraries.
+2.  Selecting Quranic verses (by Surah and Ayah).
+3.  Generating and displaying the rich, interactive syntactic visualizations.
+4.  Exploring various analytical views and detailed annotations.
+
+<p align="center">
+  <a href="https://colab.research.google.com/drive/138KR4gRFv28pGiprnPcCzeiiJDyEuJBS?usp=drive_link" target="_blank">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+  </a>
+</p>
+
+**How to Use the Interactive Notebook:**
+
+The notebook is designed for ease of use. As illustrated below, you can typically:
+1.  **Run Setup Cells:** Execute the initial cells to load data and libraries.
+2.  **Input Selection:** Use dropdowns or input fields to select a specific Surah (chapter) and Ayah (verse).
+3.  **View Output:** The corresponding syntactic visualization and/or traditional Iʿrāb will be displayed.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/NoorBayan/Quranic/main/Images/Iirab.jpg" alt="How to use the Colab Notebook - IIRAB Vis Demo" width="700px"/>
+  <br/><em>Example: Navigating the Colab Notebook for verse analysis.</em>
+</p>
+
+This interactive demo is an excellent starting point for researchers, students, and developers looking to leverage the Noor framework, the Quranic Treebank, and the IIRAB Vis tool for their work on Classical Arabic.
 
 
-The Quranic Corpus is a groundbreaking linguistic resource that unlocks the rich and complex tapestry of the Arabic language as it appears in the sacred text of Islam. This comprehensive dataset offers scholars, linguists, and Quran application developers a wealth of information, empowering them to delve deeper into the intricacies of Quranic grammar, morphology, and syntax.
 
-# Serving the Needs of Diverse Audiences:
-The Quranic Corpus caters to a wide range of users, from seasoned academics seeking to advance their research to devout Muslims wishing to enrich their understanding of the Quran. By providing a detailed and systematic analysis of the Quranic text, the corpus empowers individuals to explore the language of the Quran in unprecedented ways.
+---
 
-# Key Features:
-Extensive coverage: The corpus encompasses the entirety of the Quran, providing a comprehensive overview of the language used in the sacred text.
-Multi-layered analysis: The corpus offers a granular analysis of the Quranic text, encompassing orthography, morphology, syntax, and dependency relations.
-Detailed annotations: Each token in the corpus is enriched with meticulously crafted annotations, providing valuable insights into its linguistic features.
-Versatile applications: The corpus can be leveraged for a variety of purposes, including research on Quranic Arabic, development of Quranic applications, and educational resources for learning Arabic.
+## Getting Started (Local Usage)
 
-# A Valuable Tool for Advancing Knowledge:
-The Quranic Corpus represents a significant contribution to the field of Quranic studies and Arabic linguistics. By providing a comprehensive and accessible resource, the corpus opens up new avenues for research and empowers scholars, students, and enthusiasts alike to unlock the mysteries of the Quranic language.
+[Provide clear instructions here if users can install and run IIRAB Vis or utilize the treebank data locally. Include dependencies, setup steps, and example usage.]
 
-# Data Structure:
-The table follows a structured format with clear column names and defined data types.
-The data is organized logically, grouped by related linguistic elements and their functions.
+## Contributing
 
-# Linguistic Elements:
-## 1. Core Information:
-*	*tid:* Unique identifier for *each* table row.
-*	*sentence_id, verse_id, word_id, tok_id:* Serial counters for specific elements within the corpus.
-*	*location:* Code representing token location within the Quran (Verse:Surah:Word:Token).
-*	*chapter_id, verse_id:* Serial counters for Quranic chapters and verses.
-  
-## 2. Script and Representation:
-*	*uthmani_token/imlaai_token*: Token representations in Uthmani and Imlaai scripts, respectively.
-*	*uthmani_unicode/imlaai_unicode*: Unicode representations of corresponding tokens.
-*	*phonetic, trans*: Phonetic encoding and English translation of each word.
+We welcome contributions to enhance the Quranic Treebank and IIRAB Vis! Please see our [CONTRIBUTING.md](LINK_TO_CONTRIBUTING_FILE) file for guidelines on how to contribute (e.g., reporting issues, suggesting improvements, submitting pull requests).
 
-## 3. Morphological Analysis:
-*	pos, pos_ar: Part-of-speech tags (English and Arabic).
-*	features: Morphological characteristics based on the original corpus.
-*	segment: Token type (prefix, suffix, or stem).
-*	lemma, lemma_ar: Word lemma in Unicode and Classical Arabic.
-*	root, root_ar: Word root in Unicode and Classical Arabic.
+## License
 
-## 4. Verb Conjugation:
-*	Verb_form: System used to derive verbs and related words, indicating meaning variations.
-*	Prefix, Suffix: Types and functions of prefixes and suffixes attached to words.
-*	verb_aspect: Indicates completeness of an action (perfect, imperfect, imperative).
-*	nominal_state: Definiteness or indefiniteness of nouns (definite/indefinite).
-*	verb_mood: Function of verbs based on speaker's intent (indicative, subjunctive, jussive).
+This project is licensed under the [Specify Your License - e.g., MIT License, Creative Commons Attribution 4.0 International License]. See the [LICENSE.md](LINK_TO_LICENSE_FILE) file for details.
 
-## 5. Syntactic Analysis:
-*	special_group: Specific verb groups with unique syntactic behaviors.
-*	nominal_case: Grammatical roles of nouns in sentences (nominative, accusative, genitive).
-*	derived_nouns: Types of nouns formed from verbs (active participle, passive participle, verbal noun).
-*	verb_voice: Active or passive voice of verbs.
-*	Person, Gender, Number: Grammatical attributes indicating who/what, masculine/feminine, singular/plural/dual.
+---
 
-## 6. Dependency Relations:
-*	rel_label, rel_label_ar: Relational dependency labels in English and Arabic.
-*	ref_token_id: Identifier of the head token in a dependency relation.
-*	is_constituent: Indicates whether a token is the head of a constituent (0) or not (1).
-
-## 7. Constituent Analysis:
-*	constituent_node: Classification of binary constituent relations (Dependent-Token/Constituent to Head-Token/Constituent).
-*	constituent_position: Start and end positions of each constituent within the sentence.
-*	constituents: Surface form of each constituent in Uthmani script.
-*	constituent_label: Syntactic category of each constituent (nominal sentence, verbal sentence, etc.).
-
+<p align="center">
+  We hope this resource proves invaluable in your exploration of the Quranic language!
+</p>
