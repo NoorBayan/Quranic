@@ -21,9 +21,6 @@ This resource is not merely a collection of text but a deeply annotated corpus, 
 * [IIRAB Vis: Interactive Syntactic Visualization Tool](#iirab-vis-interactive-syntactic-visualization-tool)
   * [Key Visualization Features](#key-visualization-features)
   * [Experience IIRAB Vis: Interactive Demo (Google Colab)](#experience-iirab-vis-interactive-demo-google-colab)
-* [Getting Started (Local Usage)](#getting-started-local-usage)
-* [Contributing](#contributing)
-* [License](#license)
 
 ---
 
@@ -137,20 +134,3 @@ This interactive demo is an excellent starting point for researchers, students, 
 
 ---
 
-## Getting Started (Local Usage)
-
-[Provide clear instructions here if users can install and run IIRAB Vis or utilize the treebank data locally. Include dependencies, setup steps, and example usage.]
-
-## Contributing
-
-We welcome contributions to enhance the Quranic Treebank and IIRAB Vis! Please see our [CONTRIBUTING.md](LINK_TO_CONTRIBUTING_FILE) file for guidelines on how to contribute (e.g., reporting issues, suggesting improvements, submitting pull requests).
-
-## License
-
-This project is licensed under the [Specify Your License - e.g., MIT License, Creative Commons Attribution 4.0 International License]. See the [LICENSE.md](LINK_TO_LICENSE_FILE) file for details.
-
----
-
-<p align="center">
-  We hope this resource proves invaluable in your exploration of the Quranic language!
-</p>
